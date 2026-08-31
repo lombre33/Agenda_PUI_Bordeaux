@@ -1,0 +1,582 @@
+import grist
+from functions import *       # global uppercase functions
+import datetime, math, re     # modules commonly needed in formulas
+
+
+@grist.UserTable
+class Actions:
+  Action = grist.Text()
+
+  def B(rec, table):
+    return None
+
+  def C(rec, table):
+    return None
+
+
+@grist.UserTable
+class Annuaire:
+  Prenom = grist.Text()
+  Nom = grist.Text()
+  Email = grist.Text()
+  Lien_avatar = grist.Text()
+  fonction = grist.Text()
+  Genre = grist.Choice()
+  Justification = grist.Text()
+  numero_de_telephone = grist.Numeric()
+  perimetre_1 = grist.Reference('Perimetres')
+  perimetre_2 = grist.Reference('Perimetres')
+  perimetre_3 = grist.Reference('Perimetres')
+  perimetre_4 = grist.Reference('Perimetres')
+  Etablissement2 = grist.Text()
+  perimetre_5 = grist.Reference('Perimetres')
+  perimetre_6 = grist.Reference('Perimetres')
+  perimetre_7 = grist.Reference('Perimetres')
+  perimetre_8 = grist.Reference('Perimetres')
+  perimetre_9 = grist.Reference('Perimetres')
+  perimetre_10 = grist.Reference('Perimetres')
+  competences_1 = grist.Text()
+  competences_2 = grist.Text()
+  competences_3 = grist.Text()
+  competences_4 = grist.Text()
+  competences_5 = grist.Text()
+  competences_6 = grist.Text()
+  competences_7 = grist.Text()
+  competences_8 = grist.Text()
+  competences_9 = grist.Text()
+  Etablissement = grist.Reference('Etablissements')
+  Actions = grist.ReferenceList('Actions')
+  Communautee_s_ = grist.ReferenceList('Communautees')
+  Role_dans_le_PUI = grist.Reference('Role_Dans_le_PUI')
+  Taches = grist.ReferenceList('Taches')
+  Instances = grist.ReferenceList('Instances')
+  Autres = grist.Text()
+  GT = grist.ReferenceList('GT')
+  competences_10 = grist.Text()
+  perimetre_11 = grist.Reference('Perimetres')
+  perimetre_12 = grist.Reference('Perimetres')
+  perimetre_13 = grist.Reference('Perimetres')
+  perimetre_14 = grist.Reference('Perimetres')
+  perimetre_15 = grist.Reference('Perimetres')
+  competences_11 = grist.Text()
+  competences_12 = grist.Text()
+  competences_13 = grist.Text()
+  competences_14 = grist.Text()
+  competences_15 = grist.Text()
+  perimetre_16 = grist.Text()
+
+  @grist.formulaType(grist.ReferenceList('Perimetres'))
+  def perimetre_all(rec, table):
+    return [
+        perimetre for perimetre in [
+            rec.perimetre_1 if rec.perimetre_1 and rec.perimetre_1.Perimetre else None,
+            rec.perimetre_2 if rec.perimetre_2 and rec.perimetre_2.Perimetre else None,
+            rec.perimetre_3 if rec.perimetre_3 and rec.perimetre_3.Perimetre else None,
+            rec.perimetre_4 if rec.perimetre_4 and rec.perimetre_4.Perimetre else None,
+            rec.perimetre_5 if rec.perimetre_5 and rec.perimetre_5.Perimetre else None,
+            rec.perimetre_6 if rec.perimetre_6 and rec.perimetre_6.Perimetre else None,
+            rec.perimetre_7 if rec.perimetre_7 and rec.perimetre_7.Perimetre else None,
+            rec.perimetre_8 if rec.perimetre_8 and rec.perimetre_8.Perimetre else None,
+            rec.perimetre_9 if rec.perimetre_9 and rec.perimetre_9.Perimetre else None,
+            rec.perimetre_10 if rec.perimetre_10 and rec.perimetre_10.Perimetre else None,
+            rec.perimetre_11 if rec.perimetre_11 and rec.perimetre_11.Perimetre else None,
+            rec.perimetre_12 if rec.perimetre_12 and rec.perimetre_12.Perimetre else None,
+            rec.perimetre_13 if rec.perimetre_13 and rec.perimetre_13.Perimetre else None,
+            rec.perimetre_14 if rec.perimetre_14 and rec.perimetre_14.Perimetre else None,
+            rec.perimetre_15 if rec.perimetre_15 and rec.perimetre_15.Perimetre else None,
+            rec.perimetre_16 if rec.perimetre_16 and rec.perimetre_16.Perimetre else None,
+            rec.perimetre_17 if rec.perimetre_17 and rec.perimetre_17.Perimetre else None,
+            rec.perimetre_18 if rec.perimetre_18 and rec.perimetre_18.Perimetre else None,
+            rec.perimetre_19 if rec.perimetre_19 and rec.perimetre_19.Perimetre else None,
+            rec.perimetre_20 if rec.perimetre_20 and rec.perimetre_20.Perimetre else None,
+            rec.perimetre_21 if rec.perimetre_21 and rec.perimetre_21.Perimetre else None,
+            rec.perimetre_21_2 if rec.perimetre_21_2 and rec.perimetre_21_2.Perimetre else None,
+            rec.perimetre_22 if rec.perimetre_22 and rec.perimetre_22.Perimetre else None,
+            rec.perimetre_23 if rec.perimetre_23 and rec.perimetre_23.Perimetre else None,
+            rec.perimetre_24 if rec.perimetre_24 and rec.perimetre_24.Perimetre else None,
+            rec.perimetre_25 if rec.perimetre_25 and rec.perimetre_25.Perimetre else None
+        ] if perimetre is not None
+    ]
+
+
+  @grist.formulaType(grist.ChoiceList())
+  def Role_dans_la_tache(rec, table):
+    return None
+
+  def perimetre_17(rec, table):
+    return None
+
+  def perimetre_18(rec, table):
+    return None
+
+  def perimetre_19(rec, table):
+    return None
+
+  def perimetre_20(rec, table):
+    return None
+
+  def perimetre_21(rec, table):
+    return None
+
+  def perimetre_21_2(rec, table):
+    return None
+
+  def perimetre_22(rec, table):
+    return None
+
+  def perimetre_23(rec, table):
+    return None
+
+  def perimetre_24(rec, table):
+    return None
+
+  def perimetre_25(rec, table):
+    return None
+
+  def Lien_avatar2(rec, table):
+    return "https://resana.numerique.gouv.fr"+rec.Lien_avatar
+
+
+@grist.UserTable
+class Annuaire_brut_widget:
+  Prenom = grist.Text()
+  Nom = grist.Text()
+  Email = grist.Text()
+  Lien_avatar = grist.Text()
+  fonction = grist.Text()
+  Etablissement2 = grist.Text()
+  Genre = grist.Choice()
+  Justification = grist.Text()
+  numero_de_telephone = grist.Numeric()
+  perimetre_1 = grist.Reference('Perimetres')
+  Etablissement = grist.Reference('Etablissements')
+  GT = grist.ReferenceList('GT')
+  Instances = grist.ReferenceList('Instances')
+  Role_dans_le_PUI = grist.Reference('Role_Dans_le_PUI')
+  perimetre_2 = grist.Reference('Perimetres')
+  perimetre_3 = grist.Reference('Perimetres')
+  perimetre_4 = grist.Reference('Perimetres')
+  perimetre_5 = grist.Reference('Perimetres')
+  perimetre_6 = grist.Reference('Perimetres')
+  perimetre_7 = grist.Reference('Perimetres')
+  perimetre_8 = grist.Reference('Perimetres')
+  perimetre_9 = grist.Reference('Perimetres')
+  perimetre_10 = grist.Reference('Perimetres')
+  competences_1 = grist.Text()
+  perimetre_11 = grist.Reference('Perimetres')
+  perimetre_12 = grist.Reference('Perimetres')
+  perimetre_13 = grist.Reference('Perimetres')
+  perimetre_14 = grist.Reference('Perimetres')
+  perimetre_15 = grist.Reference('Perimetres')
+  competences_2 = grist.Text()
+  competences_3 = grist.Text()
+  competences_4 = grist.Text()
+  competences_5 = grist.Text()
+  competences_6 = grist.Text()
+  competences_7 = grist.Text()
+  competences_8 = grist.Text()
+  competences_9 = grist.Text()
+  competences_10 = grist.Text()
+  competences_11 = grist.Text()
+  competences_12 = grist.Text()
+  competences_13 = grist.Text()
+  competences_14 = grist.Text()
+  competences_15 = grist.Text()
+
+  @grist.formulaType(grist.ReferenceList('Perimetres'))
+  def perimetre_all(rec, table):
+    return [
+        rec.perimetre_1,
+        rec.perimetre_2,
+        rec.perimetre_3,
+        rec.perimetre_4,
+        rec.perimetre_5,
+        rec.perimetre_6,
+        rec.perimetre_7,
+        rec.perimetre_8,
+        rec.perimetre_9,
+        rec.perimetre_10,
+        rec.perimetre_11,
+        rec.perimetre_12,
+        rec.perimetre_13,
+        rec.perimetre_14,
+        rec.perimetre_15
+    ]
+
+  @grist.formulaType(grist.ReferenceList('Actions'))
+  def Actions(rec, table):
+    return None
+
+  @grist.formulaType(grist.Reference('Communautees'))
+  def Communautee_s_(rec, table):
+    return 0
+
+  @grist.formulaType(grist.Reference('Taches'))
+  def Taches(rec, table):
+    return 0
+
+  @grist.formulaType(grist.ChoiceList())
+  def Role_dans_la_tache(rec, table):
+    return None
+
+  def perimetre_16(rec, table):
+    return None
+
+  def perimetre_17(rec, table):
+    return None
+
+  def perimetre_18(rec, table):
+    return None
+
+  def perimetre_19(rec, table):
+    return None
+
+  def perimetre_20(rec, table):
+    return None
+
+  def perimetre_21(rec, table):
+    return None
+
+  def perimetre_21_2(rec, table):
+    return None
+
+  def perimetre_22(rec, table):
+    return None
+
+  def perimetre_23(rec, table):
+    return None
+
+  def perimetre_24(rec, table):
+    return None
+
+  def perimetre_25(rec, table):
+    return None
+
+  def Lien_avatar2(rec, table):
+    return "https://resana.numerique.gouv.fr"+rec.Lien_avatar
+
+
+@grist.UserTable
+class Annuaire_resana_complet_20260824_121922:
+  id2 = grist.Numeric()
+  prenom = grist.Text()
+  nom = grist.Text()
+  email = grist.Any()
+  telephone = grist.Any()
+  fonction = grist.Any()
+  organisation = grist.Text()
+  perimetre_1 = grist.Text()
+  perimetre_2 = grist.Text()
+  perimetre_3 = grist.Text()
+  perimetre_4 = grist.Text()
+  perimetre_5 = grist.Text()
+  perimetre_6 = grist.Text()
+  perimetre_7 = grist.Text()
+  perimetre_8 = grist.Text()
+  perimetre_9 = grist.Text()
+  perimetre_10 = grist.Text()
+  perimetre_11 = grist.Text()
+  perimetre_12 = grist.Text()
+  perimetre_13 = grist.Text()
+  perimetre_14 = grist.Text()
+  perimetre_15 = grist.Text()
+  perimetre_16 = grist.Text()
+  perimetre_17 = grist.Text()
+  perimetre_18 = grist.Text()
+  perimetre_19 = grist.Text()
+  perimetre_20 = grist.Text()
+  perimetre_21 = grist.Text()
+  perimetre_22 = grist.Text()
+  perimetre_23 = grist.Text()
+  perimetre_24 = grist.Text()
+  perimetre_25 = grist.Text()
+  competence_1 = grist.Text()
+  competence_2 = grist.Text()
+  competence_3 = grist.Text()
+  competence_4 = grist.Text()
+  competence_5 = grist.Text()
+  competence_6 = grist.Text()
+  competence_7 = grist.Text()
+  competence_8 = grist.Text()
+  competence_9 = grist.Text()
+  competence_10 = grist.Text()
+  competence_11 = grist.Text()
+  competence_12 = grist.Text()
+  competence_13 = grist.Text()
+  competence_14 = grist.Text()
+  competence_15 = grist.Text()
+  abonnement_fin_popup = grist.DateTime('Europe/Paris')
+  affichage_information_popup_last = grist.DateTime('Europe/Paris')
+  anonymiser = grist.Numeric()
+  attente_validation_admin = grist.Numeric()
+  authentification_agent_connect = grist.Numeric()
+  authentification_cerbere_active = grist.Numeric()
+  authentification_cerbere_desactive = grist.Numeric()
+  authentification_cps = grist.Any()
+  authentification_france_connect = grist.Numeric()
+  authentification_inwebo = grist.Any()
+  avatar = grist.Text()
+  avatar_choix_date = grist.DateTime('Europe/Paris')
+  charte_valide = grist.Any()
+  cle_connexion = grist.Text()
+  codocs = grist.Numeric()
+  commentaire = grist.Text()
+  confirmation_compte_actif = grist.DateTime('Europe/Paris')
+  connected_device = grist.Text()
+  connexion_echoue_date = grist.DateTime('Europe/Paris')
+  connexion_echoue_nombre = grist.Numeric()
+  connexion_last_date = grist.DateTime('Europe/Paris')
+  creation_date = grist.DateTime('Europe/Paris')
+  date_dernier_affichage_actualite = grist.DateTime('Europe/Paris')
+  date_dernier_affichage_notification = grist.DateTime('Europe/Paris')
+  date_modification = grist.DateTime('Europe/Paris')
+  dialogue_message_envoie_touche_entree = grist.Numeric()
+  disponibilite = grist.Numeric()
+  domaine_structure_validation = grist.Numeric()
+  fonction_inscription = grist.Text()
+  force_statut_connexion = grist.Numeric()
+  genre = grist.Text()
+  guid = grist.Any()
+  hide_mail = grist.Numeric()
+  identifiant = grist.Text()
+  inscription_spontanee = grist.Numeric()
+  isbox_actuellement_connecte = grist.Numeric()
+  isbox_cloud_alerte = grist.Any()
+  isbox_date_first_connect = grist.Any()
+  isbox_last_timestamp = grist.Any()
+  isbox_version = grist.Any()
+  justification_invitation = grist.Text()
+  langue = grist.Text()
+  mail_attente_validation_admin = grist.Text()
+  mail_inscription = grist.Text()
+  mail_perso = grist.Any()
+  migrated_kc = grist.Numeric()
+  mobilis_actuellement_connecte = grist.Numeric()
+  mobilis_date_first_connect = grist.DateTime('Europe/Paris')
+  mobilis_device_model = grist.Text()
+  mobilis_google_cloud_alerte = grist.Any()
+  mobilis_ios_cloud_alerte = grist.Text()
+  mobilis_last_timestamp = grist.Text()
+  navigateur_cloud_alert = grist.Text()
+  objet = grist.Numeric()
+  open_dialog_date = grist.DateTime('Europe/Paris')
+  otp = grist.Numeric()
+  otp_connexion = grist.Numeric()
+  outils_favoris = grist.Text()
+  parsec_invitation_id = grist.Any()
+  parsec_invitation_ok = grist.Numeric()
+  parsec_key_chiffre = grist.Text()
+  parsec_password_derive = grist.Any()
+  password_clear = grist.Any()
+  pendo_id = grist.Text()
+  raccourcis_favoris = grist.Text()
+  recherche_derniere = grist.Text()
+  statut_connexion = grist.Numeric()
+  statut_message = grist.Any()
+  structure_inscription = grist.Text()
+  supprime = grist.Numeric()
+  telephone_fixe = grist.Numeric()
+  telephone_mobile = grist.Numeric()
+  traitement_realise = grist.Numeric()
+  url_validation_time = grist.DateTime('Europe/Paris')
+  utilisateur_invitant = grist.Numeric()
+  valide = grist.Numeric()
+  version_mobilis = grist.Numeric()
+
+
+@grist.UserTable
+class Communautees:
+  communaute = grist.Text()
+
+  def B(rec, table):
+    return None
+
+  def C(rec, table):
+    return None
+
+
+@grist.UserTable
+class Competances:
+  Competences = grist.Text()
+  Competences_liees = grist.Text()
+
+
+@grist.UserTable
+class Credentials:
+  Cookies_php = grist.Text()
+  cookie_interstis_access = grist.Text()
+
+  def C(rec, table):
+    import requests
+
+    url = "https://resana.numerique.gouv.fr/public/perimetre?page=contacts"
+
+    try:
+        response = requests.get(url, timeout=5)
+        return f"Status: {response.status_code}, Length: {len(response.text)}"
+    except Exception as e:
+        return f"Error: {str(e)}"
+
+
+@grist.UserTable
+class Etablissements:
+  acronyme = grist.Text()
+  nom_complet = grist.Text()
+
+  def C(rec, table):
+    return None
+
+
+@grist.UserTable
+class GT:
+  nom = grist.Text()
+  lst_perimetre_classe = grist.ReferenceList('Lst_perimetre_classe', reverse_of='GT_Groupe_de_travail_3')
+
+  def objectifs(rec, table):
+    return None
+
+  def C(rec, table):
+    return None
+
+
+@grist.UserTable
+class Instances:
+  nom_instance = grist.Text()
+
+  def B(rec, table):
+    return None
+
+  def C(rec, table):
+    return None
+
+
+@grist.UserTable
+class Lst_perimetre_classe:
+  Instance_1 = grist.Reference('Instances')
+  Instance_2 = grist.Reference('Instances')
+  Instance_3 = grist.Reference('Instances')
+  Instance_4 = grist.Reference('Instances')
+  Instance_5 = grist.Reference('Instances')
+  GT_Groupe_de_travail_1 = grist.Reference('GT')
+  GT_Groupe_de_travail_2 = grist.Reference('GT')
+  GT_Groupe_de_travail_3 = grist.Reference('GT', reverse_of='lst_perimetre_classe')
+  Action_1 = grist.Reference('Actions')
+  Action_2 = grist.Reference('Actions')
+  Action_3 = grist.Reference('Actions')
+  Action_4 = grist.Reference('Actions')
+  Action_5 = grist.Reference('Actions')
+  Action_6 = grist.Reference('Actions')
+  Action_7 = grist.Reference('Actions')
+  Tache_1 = grist.Reference('Taches')
+  Tache_2 = grist.Reference('Taches')
+  Tache_3 = grist.Reference('Taches')
+  Tache_4 = grist.Text()
+  Tache_5 = grist.Text()
+  Tache_6 = grist.Text()
+  Tache_7 = grist.Text()
+  Tache_8 = grist.Text()
+  Communaute_1 = grist.Text()
+  Communaute_2 = grist.Text()
+  Communaute_3 = grist.Text()
+  Autres_1 = grist.Text()
+  Autres_2 = grist.Text()
+
+  @grist.formulaType(grist.ReferenceList('Instances'))
+  def Instances(rec, table):
+    return [
+        instance for instance in [
+            rec.Instance_1 if rec.Instance_1 else None,
+            rec.Instance_2 if rec.Instance_2 else None,
+            rec.Instance_3 if rec.Instance_3 else None,
+            rec.Instance_4 if rec.Instance_4 else None,
+            rec.Instance_5 if rec.Instance_5 else None
+        ] if instance is not None
+    ]
+
+
+  @grist.formulaType(grist.ReferenceList('GT'))
+  def GT(rec, table):
+    return [gt for gt in [rec.GT_Groupe_de_travail_1, rec.GT_Groupe_de_travail_2, rec.GT_Groupe_de_travail_3]
+            if gt and str(gt).strip() != "Blank" and gt is not None]
+
+
+  @grist.formulaType(grist.ReferenceList('Actions'))
+  def Actions(rec, table):
+    return [
+        action for action in [
+            rec.Action_1 if rec.Action_1 else None,
+            rec.Action_2 if rec.Action_2 else None,
+            rec.Action_3 if rec.Action_3 else None,
+            rec.Action_4 if rec.Action_4 else None,
+            rec.Action_5 if rec.Action_5 else None,
+            rec.Action_6 if rec.Action_6 else None,
+            rec.Action_7 if rec.Action_7 else None
+        ] if action is not None
+    ]
+
+  @grist.formulaType(grist.ReferenceList('Taches'))
+  def Taches(rec, table):
+    return [
+        tache for tache in [
+            rec.Tache_1 if rec.Tache_1 else None,
+            rec.Tache_2 if rec.Tache_2 else None,
+            rec.Tache_3 if rec.Tache_3 else None,
+            rec.Tache_4 if rec.Tache_4 else None,
+            rec.Tache_5 if rec.Tache_5 else None,
+            rec.Tache_6 if rec.Tache_6 else None,
+            rec.Tache_7 if rec.Tache_7 else None,
+            rec.Tache_8 if rec.Tache_8 else None
+        ] if tache is not None
+    ]
+
+  @grist.formulaType(grist.ReferenceList('Communautees'))
+  def Communaute(rec, table):
+    return [
+        communaute for communaute in [
+            rec.Communaute_1 if rec.Communaute_1 else None,
+            rec.Communaute_2 if rec.Communaute_2 else None,
+            rec.Communaute_3 if rec.Communaute_3 else None
+        ] if communaute is not None
+    ]
+
+
+
+@grist.UserTable
+class Perimetres:
+  Perimetre = grist.Text()
+
+  def B(rec, table):
+    return None
+
+  def C(rec, table):
+    return None
+
+
+@grist.UserTable
+class Role_Dans_le_PUI:
+  Role = grist.Text()
+
+  def B(rec, table):
+    return None
+
+  def C(rec, table):
+    return None
+
+
+@grist.UserTable
+class TMP_mapping:
+  A = grist.Text()
+  B = grist.Text()
+  C = grist.Text()
+  D = grist.Text()
+
+
+@grist.UserTable
+class Taches:
+  taches = grist.Text()
+
+  def B(rec, table):
+    return None
+
+  def C(rec, table):
+    return None
